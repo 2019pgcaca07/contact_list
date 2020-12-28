@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>
+            <%=title%>
+        </title>
+        <script src="https://kit.fontawesome.com/6c3112f718.js" crossorigin="anonymous"></script>
+        <!--our css should be below all other styles so we can override it-->
+        <link rel="stylesheet" href="/css/home.css" />
+        
+    </head>
+    <body>
+        <h1 id="page-heading" class="text-centre">
+            <i class="fas fa-address-book"></i>
+            My Contacts List</h1>
+        <div>
+              <ul class="text-centre" style="list-style-type:none">
+               <% for(let i of contact_list){%>
+                
+                   <li >
+                       <div id="flex-use" class="change-background-color ">
+                           <p style="color: white;">
+                           <%= i.name %>
+                           </p>
+                       
+                           <p style="color: white;">                  
+                       
+                           <%= i.phone %>
+                       </p>
+                       </div>
+                       <div class="delete-button">
+                           <a href="/delete-contact/?id=<%= i._id %>">
+                               <i class="fas fa-window-close"></i>
+                           </a>
+
+                       </div>
+                   </li>
+       
+       
+               <%}%>
+          
+              </ul>
+         </div>   
+        <form action="/create-contact" method="POST" class="text-centre ">
+            <input class="remove-border" type="text" name="name" placeholder="enter name" required>
+            <input class="remove-border" type="number" name="phone" placeholder="enter phone" required>
+            <button type="submit" style="color: white; background-color: grey;">Add</button>
+        </form>
+    <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
